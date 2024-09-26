@@ -35,7 +35,7 @@ jobs:
         if: ${{ !cancelled() }}
         run: |
           . ./venv/bin/activate
-          pylint $(find ./src -name '*.py' | xargs)
+          pylint $(find ./nb -name '*.py' | xargs)
 
       - name: Type check
         if: ${{ !cancelled() }}
