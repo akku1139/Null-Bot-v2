@@ -1,0 +1,14 @@
+# this (self)
+-e .
+
+# Framework
+discord
+
+# load env
+python-dotenv
+
+# useful utils
+jishaku
+
+# SyncWebhook
+requests
