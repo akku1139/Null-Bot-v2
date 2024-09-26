@@ -41,7 +41,7 @@ jobs:
         if: ${{ !cancelled() }}
         run: |
           . ./venv/bin/activate
-          pyright
+          pyright $(find ./nb -name '*.py' | xargs)
 
       - name: Cache (save)
         if: ${{ !cancelled() }}
