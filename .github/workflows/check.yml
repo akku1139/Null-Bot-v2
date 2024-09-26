@@ -24,13 +24,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
-          pip install -r .github/requirements.txt
+          pip install --user -r requirements.txt
+          pip install --user -r .github/requirements.txt
 
       - name: Lint
+        if: ${{ !cancelled() }}
         run: pylint $(find -name '*.py' | xargs)
 
       - name: Type check
+        if: ${{ !cancelled() }}
         run: pyright
 
       - name: Deps cache (save)

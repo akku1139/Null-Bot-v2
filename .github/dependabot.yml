@@ -2,10 +2,10 @@ version: 2
 updates:
   - package-ecosystem: "pip"
     directory: "./"
-    # schedule:
-    #   interval: "monthly"
+    schedule:
+      interval: "monthly"
 
   - package-ecosystem: "pip"
     directory: ".github/"
-    # schedule:
-    #   interval: "monthly"
+    schedule:
+      interval: "monthly"
