@@ -1,0 +1,42 @@
+name: Check
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deps cache (restore)
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.cache/pip
+          key: pip-cache-${{ hashFiles('requirements.txt', '.github/requirements.txt') }}
+          restore-keys: pip-cache-
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r .github/requirements.txt
+
+      - name: Lint
+        run: pylint $(find -name '*.py' | xargs)
+
+      - name: Type check
+        run: pyright
+
+      - name: Deps cache (save)
+        if: ${{ !cancelled() }}
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.cache/pip
+          key: pip-cache-${{ hashFiles('requirements.txt', '.github/requirements.txt') }}

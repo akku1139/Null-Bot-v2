@@ -2,13 +2,13 @@
 -e .
 
 # Framework
-discord
+discord ~= 2.3.2
 
-# load env
-python-dotenv
+# Load env
+python-dotenv ~= 1.0.1
 
-# useful utils
-jishaku
+# Useful utils
+jishaku ~= 2.5.2
 
 # SyncWebhook
-requests
+requests ~= 2.32.3
