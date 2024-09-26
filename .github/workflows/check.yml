@@ -13,32 +13,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deps cache (restore)
+      - name: Make venv
+        run: python -m venv venv
+
+      - name: Cache (restore)
         id: cache
         uses: actions/cache/restore@v4
         with:
           path: |
             ~/.cache/pip
-          key: pip-cache-${{ hashFiles('requirements.txt', '.github/requirements.txt') }}
-          restore-keys: pip-cache-
+          key: cache-${{ hashFiles('requirements.txt', '.github/requirements.txt') }}
+          restore-keys: cache-
 
       - name: Install Dependencies
         run: |
-          pip install --user -r requirements.txt
-          pip install --user -r .github/requirements.txt
+          . ./venv/bin/activate
+          pip install -r requirements.txt
+          pip install -r .github/requirements.txt
 
       - name: Lint
         if: ${{ !cancelled() }}
-        run: pylint $(find -name '*.py' | xargs)
+        run: |
+          . ./venv/bin/activate
+          pylint $(find -name '*.py' | xargs)
 
       - name: Type check
         if: ${{ !cancelled() }}
-        run: pyright
+        run: |
+          . ./venv/bin/activate
+          pyright
 
-      - name: Deps cache (save)
+      - name: Cache (save)
         if: ${{ !cancelled() }}
         uses: actions/cache/save@v4
         with:
           path: |
             ~/.cache/pip
-          key: pip-cache-${{ hashFiles('requirements.txt', '.github/requirements.txt') }}
+          key: cache-${{ hashFiles('requirements.txt', '.github/requirements.txt') }}
