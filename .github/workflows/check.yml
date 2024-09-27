@@ -10,6 +10,9 @@ jobs:
   main:
     runs-on: ubuntu-latest
 
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -35,13 +38,13 @@ jobs:
         if: ${{ !cancelled() }}
         run: |
           . ./venv/bin/activate
-          pylint $(find ./nb -name '*.py' | xargs)
+          pylint $(find ./src -name '*.py' | xargs)
 
       - name: Type check
         if: ${{ !cancelled() }}
         run: |
           . ./venv/bin/activate
-          pyright $(find ./nb -name '*.py' | xargs)
+          pyright $(find ./src -name '*.py' | xargs)
 
       - name: Cache (save)
         if: ${{ !cancelled() }}
