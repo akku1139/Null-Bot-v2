@@ -9,5 +9,5 @@ class Bot(commands.Bot):
       ret = True
     # Else fall back to the original
     ret = await super().is_owner(user)
-    log.info(f"owner check {user.name} ({user.id}): {ret}")
+    #log.info(f"owner check {user.name} ({user.id}): {ret}")
     return ret
