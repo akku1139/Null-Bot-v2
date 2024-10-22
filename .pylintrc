@@ -22,3 +22,4 @@ indent-after-paren = 2
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
 disable = missing-docstring,
+          wrong-import-order,
