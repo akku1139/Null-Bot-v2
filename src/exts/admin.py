@@ -15,6 +15,7 @@ class AdminCog(commands.Cog, name = __name__):
     log.info("loaded")
 
   @commands.command()
+  @commands.is_owner()
   async def update(self, ctx):
     log.info("Starting update")
     pull = subprocess.run(["git","pull"], capture_output=True, text=True, check=False).stdout
