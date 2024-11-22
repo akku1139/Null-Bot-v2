@@ -16,11 +16,11 @@ class NewsManagerCog(commands.Cog, name = __name__):
   async def on_thread_update(self, _before, after):
     if after.parent_id == 1289987225617956988: # if news
       if after.archived:
-        await after.edit(archived = false)
+        await after.edit(archived=False)
 
 async def setup(bot: Bot):
   await bot.add_cog(NewsManagerCog(bot))
 
 async def teardown(bot: Bot):
-  await bot.remove_cog(NewsManagerCog(bot))
+  await bot.remove_cog("NewsManagerCog")
   log.info("unloaded")

@@ -32,5 +32,5 @@ if __name__ == "__main__":
     bot.run(TOKEN, log_handler=None)
   except Exception as e:
     log.error(e)
-    stdout = subprocess.run(["git","pull"], capture_output=True, text=True).stdout
+    stdout = subprocess.run(["git","pull"], capture_output=True, text=True, check=False).stdout
     log.info("git pull\n"+stdout)

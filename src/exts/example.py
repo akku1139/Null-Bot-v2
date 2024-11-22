@@ -16,5 +16,5 @@ async def setup(bot: Bot):
   await bot.add_cog(ExampleCog(bot))
 
 async def teardown(bot: Bot):
-  await bot.remove_cog(ExampleCog(bot))
+  await bot.remove_cog("ExampleCog")
   log.info("unloaded")
