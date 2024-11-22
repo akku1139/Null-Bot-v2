@@ -23,3 +23,4 @@ indent-after-paren = 2
 # --disable=W".
 disable = missing-docstring,
           wrong-import-order,
+          line-too-long,

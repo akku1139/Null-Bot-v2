@@ -30,7 +30,7 @@ async def setup_hook():
 if __name__ == "__main__":
   try:
     bot.run(TOKEN, log_handler=None)
-  except Exception as e:
+  except Exception as e: # pylint: disable=broad-exception-caught
     log.error(e)
     stdout = subprocess.run(["git","pull"], capture_output=True, text=True, check=False).stdout
-    log.info("git pull\n"+stdout)
+    log.info("git pull\n"+stdout) # pylint: disable=logging-not-lazy

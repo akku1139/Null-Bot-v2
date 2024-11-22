@@ -44,5 +44,5 @@ class DiscordWebHookHandler(logging.Handler):
     try:
       for chunk in splitter(self.format(record)):
         self.webhook.send("```js\n" + chunk + "\n```")
-    except Exception:
+    except Exception: # pylint: disable=broad-exception-caught
       self.handleError(record)
