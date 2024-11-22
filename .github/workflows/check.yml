@@ -19,9 +19,9 @@ jobs:
       - name: Make venv
         run: python -m venv venv
 
-      - name: Cache (restore)
+      - name: Cache
         id: cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cache/pip
@@ -45,11 +45,3 @@ jobs:
         run: |
           . ./venv/bin/activate
           pyright $(find ./src -name '*.py' | xargs)
-
-      - name: Cache (save)
-        if: ${{ !cancelled() }}
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            ~/.cache/pip
-          key: cache-${{ hashFiles('requirements.txt', '.github/requirements.txt') }}
