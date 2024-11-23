@@ -19,7 +19,7 @@ class AnkaCog(commands.Cog, name = __name__):
       if v["msg"].channel.id == ctx.channel.id:
         res += f'>>{v["target"]} ({v["count"]}/{v["target"]})\n'
 
-    ctx.reply(res)
+    await ctx.reply(res)
 
   @commands.Cog.listener()
   async def on_ready(self):
@@ -54,7 +54,7 @@ class AnkaCog(commands.Cog, name = __name__):
   @anka.command(hidden=True)
   @commands.is_owner()
   async def showall(self, ctx):
-    ctx.reply(str(self.ankas))
+    await ctx.reply(str(self.ankas))
 
 async def setup(bot: Bot):
   await bot.add_cog(AnkaCog(bot))
