@@ -3,7 +3,7 @@ cd `dirname $0`
 export PYTHONPATH="`pwd`:$PYTHONPATH"
 
 while true; do
-  python src/main.py
   git pull
+  python src/main.py
   sleep 5
 done
