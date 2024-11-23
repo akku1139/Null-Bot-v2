@@ -1,7 +1,6 @@
 import discord
 from dotenv import load_dotenv
 import os
-import subprocess
 from bot import Bot
 from log_handler import DiscordWebHookHandler
 from logging import getLogger

@@ -12,8 +12,9 @@ class AnkaCog(commands.Cog, name = __name__):
     self.bot = bot
     self.ankas = {}
 
-  @commands.Group()
-  async def anka(self, ctx):
+  @commands.group()
+  async def anka(self, _ctx):
+    # list ankas in this channel
     return
 
   @commands.Cog.listener()
@@ -41,7 +42,7 @@ class AnkaCog(commands.Cog, name = __name__):
           "count": 0,
         }
 
-  @anka.command()
+  @anka.command(hidden=True)
   @commands.is_owner()
   async def showall(self, ctx):
     ctx.reply(str(self.ankas))
