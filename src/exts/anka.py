@@ -39,7 +39,7 @@ class AnkaCog(commands.Cog, name = __name__):
           v["msg"].reply(f'>>{v["target"]} {msg.jump_url}')
 
     for k in rm:
-      del self.ankas["k"]
+      del self.ankas[k]
 
     t = re.findall(">>(\\d+)", msg.content)
     for p in t:
