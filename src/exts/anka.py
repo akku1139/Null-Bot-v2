@@ -20,9 +20,9 @@ class AnkaCog(commands.Cog, name = __name__):
     res = []
     for _k, v in self.ankas.items():
       if v["msg"].channel.id == ctx.channel.id:
-        res.append(f'>>{v["target"]} ({v["count"]}/{v["target"]})')
+        res.append(f'>>{v["target"]} ({v["count"]}/{v["target"]}) {v["msg"].jump_url}')
 
-    await ctx.reply(f'{len(res)}個の安価が進行中です!' + "\n".join(res))
+    await ctx.reply(f'{len(res)}個の安価が進行中です!\n' + "\n".join(res))
 
   @commands.Cog.listener()
   async def on_ready(self):
