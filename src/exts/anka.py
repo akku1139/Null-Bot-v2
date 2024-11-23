@@ -36,7 +36,7 @@ class AnkaCog(commands.Cog, name = __name__):
         v["count"] += 1
         if v["count"] == v["target"]:
           rm.append(k)
-          v["msg"].reply(f'>>{v["target"]} {msg.jump_url}')
+          await v["msg"].reply(f'>>{v["target"]} {msg.jump_url}')
 
     for k in rm:
       del self.ankas[k]
