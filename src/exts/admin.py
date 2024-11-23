@@ -17,8 +17,7 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
   @commands.command()
   @commands.is_owner()
   async def update(self, ctx):
-    log.info("Starting update")
-    await ctx.add_reaction("🔁")
+    await ctx.reply("🔁 Starting update")
 
     l  = "$ git pull\n"
     l += subprocess.run(["git","pull"], capture_output=True, text=True, check=False).stdout
