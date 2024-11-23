@@ -13,9 +13,13 @@ class AnkaCog(commands.Cog, name = __name__):
     self.ankas = {}
 
   @commands.group()
-  async def anka(self, _ctx):
-    # list ankas in this channel
-    return
+  async def anka(self, ctx):
+    res = ""
+    for _k, v in self.ankas.items():
+      if v["msg"].channel.id == ctx.channel.id:
+        res += f'>>{v["target"]} ({v["count"]}/{v["target"]})\n'
+
+    ctx.reply(res)
 
   @commands.Cog.listener()
   async def on_ready(self):
