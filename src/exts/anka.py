@@ -14,6 +14,9 @@ class AnkaCog(commands.Cog, name = __name__):
 
   @commands.group()
   async def anka(self, ctx):
+    if ctx.invoked_subcommand is not None:
+      return
+
     res = []
     for _k, v in self.ankas.items():
       if v["msg"].channel.id == ctx.channel.id:
