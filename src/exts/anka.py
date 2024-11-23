@@ -38,7 +38,8 @@ class AnkaCog(commands.Cog, name = __name__):
           a["msg"].reply(f'>>{a["target"]} {msg.jump_url}')
 
     t = re.findall(">>(\\d+)", msg.content)
-    for u in t:
+    for p in t:
+      u = int(p)
       if 0 < u < 50:
         self.ankas[str(uuid.uuid4())] = {
           "msg": msg,
