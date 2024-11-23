@@ -30,12 +30,16 @@ class AnkaCog(commands.Cog, name = __name__):
     if msg.author.bot:
       return
 
+    rm = []
     for k, v in self.ankas.items():
       if v["msg"].channel.id == msg.channel.id:
         v["count"] += 1
         if v["count"] == v["target"]:
-          a = self.ankas.pop(k)
-          a["msg"].reply(f'>>{a["target"]} {msg.jump_url}')
+          rm.append(k)
+          v["msg"].reply(f'>>{v["target"]} {msg.jump_url}')
+
+    for k in rm:
+      del self.ankas["k"]
 
     t = re.findall(">>(\\d+)", msg.content)
     for p in t:
