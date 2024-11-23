@@ -35,12 +35,14 @@ class AnkaCog(commands.Cog, name = __name__):
 
     rm = []
     for k, v in self.ankas.items():
+      log.info(v)
       if v["msg"].channel.id == msg.channel.id:
         v["count"] += 1
-        if v["count"] == v["target"] and k not in rm:
+        if v["count"] == v["target"]: # and k not in rm
           rm.append(k)
-          await v["msg"].reply(f'>>{v["target"]} {msg.jump_url}')
+          await v["msg"].reply(f'>>{v["target"]} {msg.jump_url} (id: {k})')
 
+    log.info(rm)
     for k in rm:
       del self.ankas[k]
 
