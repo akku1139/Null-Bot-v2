@@ -6,7 +6,7 @@ import subprocess
 import logging
 log = logging.getLogger(__name__)
 
-class AdminCog(commands.Cog, name = __name__):
+class AdminCog(commands.Cog, name=__name__, command_attrs=dict(hidden=True)):
   def __init__(self, bot: Bot):
     self.bot = bot
 
