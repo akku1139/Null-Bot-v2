@@ -37,7 +37,7 @@ class AnkaCog(commands.Cog, name = __name__):
     for k, v in self.ankas.items():
       if v["msg"].channel.id == msg.channel.id:
         v["count"] += 1
-        if v["count"] == v["target"]:
+        if v["count"] == v["target"] and k not in rm:
           rm.append(k)
           await v["msg"].reply(f'>>{v["target"]} {msg.jump_url}')
 
