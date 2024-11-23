@@ -16,6 +16,8 @@ Pylintがeditableで問題
 https://github.com/microsoft/vscode-python/issues/14574
 https://github.com/microsoft/vscode-python/issues/14570
 
-JSKを使い方
-
+jishakuを使い方
 https://qiita.com/t3tra/items/d41b694a8c04c6ac3687
+
+cogs, exts, command groups
+https://qiita.com/Lazialize/items/81f1430d9cd57fbd82fb

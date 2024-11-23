@@ -7,12 +7,14 @@ import uuid
 import logging
 log = logging.getLogger(__name__)
 
-group = commands.Group(name="anka")
-
 class AnkaCog(commands.Cog, name = __name__):
   def __init__(self, bot: Bot):
     self.bot = bot
     self.ankas = {}
+
+  @commands.Group()
+  async def anka(self, ctx):
+    return
 
   @commands.Cog.listener()
   async def on_ready(self):
@@ -39,7 +41,7 @@ class AnkaCog(commands.Cog, name = __name__):
           "count": 0,
         }
 
-  @group.command()
+  @anka.command()
   @commands.is_owner()
   async def showall(self, ctx):
     ctx.reply(str(self.ankas))
