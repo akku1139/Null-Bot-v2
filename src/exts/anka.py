@@ -35,7 +35,6 @@ class AnkaCog(commands.Cog, name = __name__):
 
     rm = []
     for k, v in self.ankas.items():
-      log.info(v)
       if v["msg"].channel.id == msg.channel.id:
         v["count"] += 1
         if v["count"] == v["target"]: # and k not in rm
