@@ -3,6 +3,7 @@
 ## TODOs
 
 - auto update exts
+- anka message bomb (Reply to the target message instead of the anka base)
 
 ## Note
 
