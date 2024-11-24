@@ -41,11 +41,13 @@ class LoginBonusCog(commands.Cog, name = __name__):
     c = msg.content
 
     if (
-      "ログボ" in c
-      or "ログインボーナス" in c
-      or "ろぐいんぼーなす" in c
-      or "ろぐぼ" in c
-      or "login" in c
+      "ログボ" in c or
+      "ろぐぼ" in c or
+      "ログインボーナス" in c or
+      "ろぐいんぼーなす" in c or
+      "ログインボーニャス" in c or
+      "ろぐいんぼーにゃす" in c or
+      "login" in c
     ):
       # self.data.setdefault(
       #   str(msg.author.id),
@@ -55,6 +57,8 @@ class LoginBonusCog(commands.Cog, name = __name__):
       #   }
       # )
       # get last login date
+      # https://qiita.com/dkugi/items/8c32cc481b365c277ec2
+      # https://note.nkmk.me/python-datetime-usage/#datetoday
       await msg.add_reaction("⭕")
       await msg.reply("Wip: ログインを確認しました!")
 
