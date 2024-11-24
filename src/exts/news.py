@@ -21,5 +21,5 @@ class NewsManagerCog(commands.Cog, name = __name__):
 async def setup(bot: Bot):
   await bot.add_cog(NewsManagerCog(bot))
 
-async def teardown(bot: Bot):
+async def teardown(_bot: Bot):
   log.info("unloaded")

@@ -8,5 +8,5 @@ async def setup(bot: Bot):
   # I don't recommend doing this!
   await bot.add_cog(Jishaku(bot=bot))
 
-async def teardown(bot: Bot):
+async def teardown(_bot: Bot):
   log.info("unloaded")

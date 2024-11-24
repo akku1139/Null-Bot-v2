@@ -33,5 +33,5 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
 async def setup(bot: Bot):
   await bot.add_cog(AdminCog(bot))
 
-async def teardown(bot: Bot):
+async def teardown(_bot: Bot):
   log.info("unloaded")
