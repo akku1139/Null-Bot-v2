@@ -23,7 +23,7 @@ class LoginBonusCog(commands.Cog, name = __name__):
     self.bot = bot
 
   @tasks.loop(hours=5)
-  async def save_data_cog():
+  async def save_data_cog(self):
     await save_data()
 
   @commands.Cog.listener()
@@ -44,10 +44,10 @@ class LoginBonusCog(commands.Cog, name = __name__):
       or "ろぐぼ" in c
       or "login" in c
     ):
-      msg.reply("Wip: ログインを確認しました!")
+      await msg.reply("Wip: ログインを確認しました!")
 
 async def setup(bot: Bot):
-  global data
+  global data # pylint: disable=global-statement
   async with aiofiles.open(DATAPATH, mode="r") as f:
     contents = await f.read()
   data = json.loads(contents)
