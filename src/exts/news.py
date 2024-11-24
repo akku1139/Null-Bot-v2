@@ -17,6 +17,7 @@ class NewsManagerCog(commands.Cog, name = __name__):
     if after.parent_id == 1289987225617956988: # if news
       if after.archived:
         await after.edit(archived=False)
+        log.info(f'Reopen thread: [{after.name}]({after.jump_url})')
 
 async def setup(bot: Bot):
   await bot.add_cog(NewsManagerCog(bot))
