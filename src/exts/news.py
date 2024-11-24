@@ -22,5 +22,4 @@ async def setup(bot: Bot):
   await bot.add_cog(NewsManagerCog(bot))
 
 async def teardown(bot: Bot):
-  await bot.remove_cog("NewsManagerCog")
   log.info("unloaded")

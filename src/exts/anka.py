@@ -63,6 +63,4 @@ async def setup(bot: Bot):
   await bot.add_cog(AnkaCog(bot))
 
 async def teardown(bot: Bot):
-  bot.remove_command("anka")
-  await bot.remove_cog("AnkaCog")
   log.info("unloaded")

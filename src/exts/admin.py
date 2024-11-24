@@ -34,6 +34,4 @@ async def setup(bot: Bot):
   await bot.add_cog(AdminCog(bot))
 
 async def teardown(bot: Bot):
-  bot.remove_command("update")
-  await bot.remove_cog("AdminCog")
   log.info("unloaded")

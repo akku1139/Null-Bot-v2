@@ -23,5 +23,4 @@ async def setup(bot: Bot):
   await bot.add_cog(GreetingCog(bot))
 
 async def teardown(bot: Bot):
-  await bot.remove_cog("GreetingCog")
   log.info("unloaded")
