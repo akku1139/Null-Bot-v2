@@ -5,6 +5,7 @@ from src.bot import Bot
 
 import os.path
 import json
+import datetime
 
 import aiofiles
 
@@ -46,6 +47,15 @@ class LoginBonusCog(commands.Cog, name = __name__):
       or "ろぐぼ" in c
       or "login" in c
     ):
+      # self.data.setdefault(
+      #   str(msg.author.id),
+      #   {
+      #     "last": "",
+      #     "total": 0,
+      #   }
+      # )
+      # get last login date
+      await msg.add_reaction("⭕")
       await msg.reply("Wip: ログインを確認しました!")
 
 async def setup(bot: Bot):
