@@ -12,23 +12,25 @@ import logging
 log = logging.getLogger(__name__)
 
 DATAPATH = f'{os.path.dirname(__file__)}/../../data/login_bonus.json'
-data = {}
-
-async def save_data():
-  async with aiofiles.open(DATAPATH, mode="w") as f:
-    await f.write(json.dumps(data, indent=2, ensure_ascii=False))
 
 class LoginBonusCog(commands.Cog, name = __name__):
   def __init__(self, bot: Bot):
     self.bot = bot
+    self.data = {}
+
+  async cog_load(self):
+    async with aiofiles.open(DATAPATH, mode="r") as f:
+      contents = await f.read()
+    self.data = json.loads(contents)
+    self.save_data.start()
+
+  async cog_unload(self):
+    await self.save_data()
 
   @tasks.loop(hours=5)
-  async def save_data_cog(self):
-    await save_data()
-
-  @commands.Cog.listener()
-  async def on_ready(self):
-    log.info("loaded")
+  async def save_data(self):
+    async with aiofiles.open(DATAPATH, mode="w") as f:
+      await f.write(json.dumps(self.data, indent=2, ensure_ascii=False))
 
   @commands.Cog.listener()
   async def on_message(self, msg):
@@ -47,13 +49,8 @@ class LoginBonusCog(commands.Cog, name = __name__):
       await msg.reply("Wip: ログインを確認しました!")
 
 async def setup(bot: Bot):
-  global data # pylint: disable=global-statement
-  async with aiofiles.open(DATAPATH, mode="r") as f:
-    contents = await f.read()
-  data = json.loads(contents)
-
+  log.info("loaded")
   await bot.add_cog(LoginBonusCog(bot))
 
 async def teardown(_bot: Bot):
-  await save_data()
   log.info("unloaded")

@@ -9,10 +9,6 @@ class NewsManagerCog(commands.Cog, name = __name__):
     self.bot = bot
 
   @commands.Cog.listener()
-  async def on_ready(self):
-    log.info("loaded")
-
-  @commands.Cog.listener()
   async def on_thread_update(self, _before, after):
     if after.parent_id == 1289987225617956988: # if news
       if after.archived:
@@ -20,6 +16,7 @@ class NewsManagerCog(commands.Cog, name = __name__):
         log.info("Reopen thread: [%s](%s)", after.name, after.jump_url)
 
 async def setup(bot: Bot):
+  log.info("loaded")
   await bot.add_cog(NewsManagerCog(bot))
 
 async def teardown(_bot: Bot):

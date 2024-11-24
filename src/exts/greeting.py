@@ -20,6 +20,7 @@ class GreetingCog(commands.Cog, name = __name__):
         await msg.reply("おやすみ")
 
 async def setup(bot: Bot):
+  log.info("loaded")
   await bot.add_cog(GreetingCog(bot))
 
 async def teardown(_bot: Bot):

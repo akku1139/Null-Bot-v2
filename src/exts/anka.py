@@ -25,10 +25,6 @@ class AnkaCog(commands.Cog, name = __name__):
     await ctx.reply(f'{len(res)}個の安価が進行中です!\n' + "\n".join(res))
 
   @commands.Cog.listener()
-  async def on_ready(self):
-    log.info("loaded")
-
-  @commands.Cog.listener()
   async def on_message(self, msg):
     if msg.author.bot:
       return
@@ -64,6 +60,7 @@ class AnkaCog(commands.Cog, name = __name__):
     await ctx.reply(str(self.ankas))
 
 async def setup(bot: Bot):
+  log.info("loaded")
   await bot.add_cog(AnkaCog(bot))
 
 async def teardown(_bot: Bot):

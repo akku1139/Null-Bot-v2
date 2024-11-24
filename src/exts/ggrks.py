@@ -11,10 +11,6 @@ class GgrksCog(commands.Cog, name = __name__):
     self.bot = bot
 
   @commands.Cog.listener()
-  async def on_ready(self):
-    log.info("loaded")
-
-  @commands.Cog.listener()
   async def on_message(self, msg):
     if msg.author.bot:
       return
@@ -35,6 +31,7 @@ class GgrksCog(commands.Cog, name = __name__):
       return
 
 async def setup(bot: Bot):
+  log.info("loaded")
   await bot.add_cog(GgrksCog(bot))
 
 async def teardown(_bot: Bot):

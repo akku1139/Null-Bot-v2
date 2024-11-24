@@ -5,6 +5,7 @@ import logging
 log = logging.getLogger(__name__)
 
 async def setup(bot: Bot):
+  log.info("loaded")
   # I don't recommend doing this!
   await bot.add_cog(Jishaku(bot=bot))
 

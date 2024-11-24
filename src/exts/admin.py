@@ -10,10 +10,6 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
   def __init__(self, bot: Bot):
     self.bot = bot
 
-  @commands.Cog.listener()
-  async def on_ready(self):
-    log.info("loaded")
-
   @commands.command()
   @commands.is_owner()
   async def update(self, ctx):
@@ -31,6 +27,7 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
     await msg.edit(content=f"```\n{l}```")
 
 async def setup(bot: Bot):
+  log.info("loaded")
   await bot.add_cog(AdminCog(bot))
 
 async def teardown(_bot: Bot):
