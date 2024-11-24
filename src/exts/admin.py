@@ -28,7 +28,7 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
 
     log.info(l)
 
-    await msg.edit(f"```\n{l}```")
+    await msg.edit(content=f"```\n{l}```")
 
 async def setup(bot: Bot):
   await bot.add_cog(AdminCog(bot))
