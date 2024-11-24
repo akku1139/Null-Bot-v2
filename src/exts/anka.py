@@ -34,12 +34,16 @@ class AnkaCog(commands.Cog, name = __name__):
       return
 
     rm = []
+    m = ""
     for k, v in self.ankas.items():
       if v["msg"].channel.id == msg.channel.id:
         v["count"] += 1
         if v["count"] == v["target"]: # and k not in rm
           rm.append(k)
-          await v["msg"].reply(f'>>{v["target"]} {msg.jump_url}')
+          m += f'[>>{v["target"]}]({v["msg"].jump_url}) <@{v["msg"].author.id}>\n'
+
+    if m != "":
+      await msg.reply("安価されました\n" + m)
 
     for k in rm:
       del self.ankas[k]
