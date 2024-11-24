@@ -23,7 +23,7 @@ class GgrksCog(commands.Cog, name = __name__):
 
     ggrks = m.removesuffix("って何?").removesuffix("って何？").removesuffix("ってなに？").removesuffix("ってなに？").removesuffix("って何").removesuffix("ってなに")
     if ggrks != m:
-      await message.reply(
+      await msg.reply(
         "自分で調べることは非常に重要です。\n"+
         "https://ggrks.world/" + ggrks.replace(" ", "+")
       )
@@ -31,7 +31,7 @@ class GgrksCog(commands.Cog, name = __name__):
 
     ggrks = m.removesuffix(" 検索").removesuffix(" [search]").removesuffix("　検索").removesuffix("　[search]")
     if ggrks != m:
-      await message.reply("https://google.com/search?q=" + urllib.parse.quote_plus(ggrks))
+      await msg.reply("https://google.com/search?q=" + urllib.parse.quote_plus(ggrks))
       return
 
 async def setup(bot: Bot):
