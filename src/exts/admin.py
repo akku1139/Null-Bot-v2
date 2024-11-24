@@ -23,7 +23,7 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
     l += subprocess.run(["git","pull"], capture_output=True, text=True, check=False).stdout
     l += "\n$ git pull --depth=1\n"
     l += subprocess.run(["git","pull","--depth=1"], capture_output=True, text=True, check=False).stdout
-    l += "\n$ git log"
+    l += "\n$ git log\n"
     l += subprocess.run(["git","log"], capture_output=True, text=True, check=False).stdout
 
     log.info(l)
