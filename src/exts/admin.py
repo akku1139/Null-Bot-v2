@@ -17,7 +17,7 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
   @commands.command()
   @commands.is_owner()
   async def update(self, ctx):
-    await ctx.reply("🔁 Starting update")
+    msg = await ctx.reply("🔁 Starting update")
 
     l  = "$ git pull\n"
     l += subprocess.run(["git","pull"], capture_output=True, text=True, check=False).stdout
@@ -28,7 +28,7 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
 
     log.info(l)
 
-    await ctx.reply(f"```\n{l}```")
+    await msg.edit(f"```\n{l}```")
 
 async def setup(bot: Bot):
   await bot.add_cog(AdminCog(bot))
