@@ -18,13 +18,13 @@ class LoginBonusCog(commands.Cog, name = __name__):
     self.bot = bot
     self.data = {}
 
-  async cog_load(self):
+  async def cog_load(self):
     async with aiofiles.open(DATAPATH, mode="r") as f:
       contents = await f.read()
     self.data = json.loads(contents)
     self.save_data.start()
 
-  async cog_unload(self):
+  async def cog_unload(self):
     await self.save_data()
 
   @tasks.loop(hours=5)
