@@ -13,6 +13,7 @@ import logging
 log = logging.getLogger(__name__)
 
 DATAPATH = f'{os.path.dirname(__file__)}/../../data/login_bonus.json'
+KEYWORDS = ["ログボ", "ろぐぼ", "ログインボーナス", "ろぐいんぼーなす", "ログインボーニャス", "ろぐい んぼーにゃす", "login"]
 
 class LoginBonusCog(commands.Cog, name = __name__):
   def __init__(self, bot: Bot):
@@ -38,24 +39,14 @@ class LoginBonusCog(commands.Cog, name = __name__):
     if msg.author.bot:
       return
 
-    c = msg.content
-
-    if (
-      "ログボ" in c or
-      "ろぐぼ" in c or
-      "ログインボーナス" in c or
-      "ろぐいんぼーなす" in c or
-      "ログインボーニャス" in c or
-      "ろぐいんぼーにゃす" in c or
-      "login" in c
-    ):
-      # self.data.setdefault(
-      #   str(msg.author.id),
-      #   {
-      #     "last": "",
-      #     "total": 0,
-      #   }
-      # )
+    if any(keyword in msg.content for keyword in keywords):
+      self.data.setdefault(
+        str(msg.author.id),
+        {
+          "last": "",
+          "total": 0,
+        }
+      )
       # get last login date
       # https://qiita.com/dkugi/items/8c32cc481b365c277ec2
       # https://note.nkmk.me/python-datetime-usage/#datetoday

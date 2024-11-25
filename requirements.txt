@@ -10,8 +10,5 @@ python-dotenv ~= 1.0.1
 # Useful utils
 jishaku ~= 2.6.0
 
-# SyncWebhook
-requests ~= 2.32.3
-
 # Asyncio fs util
 aiofiles ~= 24.1.0
