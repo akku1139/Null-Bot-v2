@@ -25,7 +25,7 @@ class TOCog(commands.Cog, name = __name__):
   async def on_message(self, message):
     msg = message.content
     if msg in [
-      "Timeoutされたーい", "TOされたい"
+      "Timeoutされたーい", "TOされたーい", "タイムアウトされたーい", "timeoutされたーい", "タイムアウトされたい", "Timeoutされたい", "TOされたい", "timeoutされたい"
     ]:
       await message.author.timeout(datetime.timedelta(minutes=5), reason="Timeoutされたーい")
       await message.reply(random.choice(timeout_messages))
