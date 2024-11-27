@@ -23,6 +23,9 @@ class TOCog(commands.Cog, name = __name__):
 
   @commands.Cog.listener()
   async def on_message(self, message):
+    if message.author.bot:
+      return
+
     msg = message.content
     if msg in [
       "Timeoutされたーい", "TOされたーい", "タイムアウトされたーい", "timeoutされたーい", "タイムアウトされたい", "Timeoutされたい", "TOされたい", "timeoutされたい"

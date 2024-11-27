@@ -33,6 +33,7 @@ class LoginBonusCog(commands.Cog, name = __name__):
   async def save_data(self):
     async with aiofiles.open(DATAPATH, mode="w") as f:
       await f.write(json.dumps(self.data, indent=2, ensure_ascii=False))
+    log.info("login_bonus.json saved")
 
   @commands.Cog.listener()
   async def on_message(self, msg):
