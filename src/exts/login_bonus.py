@@ -39,7 +39,7 @@ class LoginBonusCog(commands.Cog, name = __name__):
     if msg.author.bot:
       return
 
-    if any(keyword in msg.content for keyword in keywords):
+    if any(keyword in msg.content for keyword in KEYWORDS):
       self.data.setdefault(
         str(msg.author.id),
         {
