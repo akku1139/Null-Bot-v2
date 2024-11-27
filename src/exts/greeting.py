@@ -14,7 +14,7 @@ class GreetingCog(commands.Cog, name = __name__):
       return
 
     match msg.content:
-      case "おはよう":
+      case "おはよう" | "おは":
         await msg.reply("おは")
       case "おやすみ":
         await msg.reply("おやすみ")
