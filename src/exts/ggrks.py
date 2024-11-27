@@ -17,7 +17,7 @@ class GgrksCog(commands.Cog, name = __name__):
 
     m = msg.content
 
-    ggrks = m
+    ggrks = ( m
       .removesuffix("って何?")
       .removesuffix("って何？")
       .removesuffix("ってなに？")
@@ -28,6 +28,7 @@ class GgrksCog(commands.Cog, name = __name__):
       .removesuffix("って誰?")
       .removesuffix("ってだれ？")
       .removesuffix("って誰？")
+    )
     if ggrks != m:
       await msg.reply(
         "自分で調べることは非常に重要です。\n"+
@@ -35,13 +36,14 @@ class GgrksCog(commands.Cog, name = __name__):
       )
       return
 
-    ggrks = m
+    ggrks = ( m
       .removesuffix(" 検索")
       .removesuffix(" [search]")
       .removesuffix("　検索")
       .removesuffix("　[search]")
       .removesuffix(" けんさく")
       .removesuffix("　けんさく")
+    )
     if ggrks != m:
       await msg.reply("https://google.com/search?q=" + urllib.parse.quote_plus(ggrks))
       return
