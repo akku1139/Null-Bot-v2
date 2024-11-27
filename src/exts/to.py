@@ -2,7 +2,7 @@ from discord.ext import commands
 from src.bot import Bot
 
 import random
-import timedelta
+import datetime
 
 import logging
 log = logging.getLogger(__name__)
