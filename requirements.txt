@@ -10,7 +10,11 @@ python-dotenv ~= 1.0.1
 # Useful utils
 jishaku ~= 2.6.0
 
-# Asyncio fs util
+# AsyncIO FS util
 aiofiles ~= 24.1.0
 
+# AsyncIO HTTP library
 aiohttp ~= 3.11.7
+
+# Fast AsyncIO event loop
+uvloop ~= 0.21.0

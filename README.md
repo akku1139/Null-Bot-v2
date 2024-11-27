@@ -3,7 +3,7 @@
 ## TODOs
 
 - auto update exts
-- anka message bomb (Reply to the target message instead of the anka base)
+- run with uvloop
 
 ## Note
 
@@ -30,3 +30,8 @@ https://qiita.com/Tettu0530_Qiita/items/372c8eb7a25aabc3c0c3
 
 HybridCommands
 https://zenn.dev/yaakiyu_s/articles/43deb462a663c7
+
+aio logging
+https://docs.python.org/ja/3/library/asyncio-dev.html
+https://ittrip.xyz/python/async-logging-python
+https://qiita.com/smatsumt/items/d8f290e40077a14210f2

@@ -4,6 +4,7 @@ import os
 from bot import Bot
 from log_handler import DiscordWebHookHandler
 from logging import getLogger
+import uvloop
 
 load_dotenv()
 TOKEN = os.environ["DISCORD_TOKEN"]
@@ -27,4 +28,5 @@ async def setup_hook():
   log.info("exts loaded")
 
 if __name__ == "__main__":
+  uvloop.install()
   bot.run(TOKEN, log_handler=None)
