@@ -23,6 +23,9 @@ async def run(cmd):
   # if stderr:
   #   print(f'[stderr]\n{stderr.decode()}')
 
+async def run_log(cmd: str) -> str:
+  return f'$ {cmd} \n{await run(cmd)}\n'
+
 class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
   def __init__(self, bot: Bot):
     self.bot = bot
@@ -32,12 +35,10 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
   async def update(self, ctx):
     msg = await ctx.reply("🔁 Starting update")
 
-    l  = "$ git pull\n"
-    l += await run("git pull", capture_output=True, text=True, check=False)
-    l += "\n$ git pull --depth=1\n"
-    l += await run("git pull --depth=1", capture_output=True, text=True, check=False)
-    l += "\n$ git log\n"
-    l += await run("git log", capture_output=True, text=True, check=False)
+    l = ""
+    l += await run_log("git pull")
+    l += await run_log("git pull --depth=1")
+    l += await run_log("git log")
 
     log.info(l)
 
