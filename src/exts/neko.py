@@ -13,8 +13,8 @@ class NekoCog(commands.Cog, name = __name__):
 
   @commands.command(description="TheCatAPIを使用してネコの画像を取得します")
   async def neko(self, ctx):
-    cat = (await (await session.get("https://api.thecatapi.com/v1/images/search")).json())[0]
     async with aiohttp.ClientSession() as session:
+      cat = (await (await session.get("https://api.thecatapi.com/v1/images/search")).json())[0]
       await ctx.reply(
         embed = discord.Embed().set_image(url = cat["url"]).set_footer(title = "id: "+cat["id"])
       )
