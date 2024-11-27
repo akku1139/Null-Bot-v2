@@ -2,6 +2,7 @@ from discord.ext import commands
 from src.bot import Bot
 
 import random
+import timedelta
 
 import logging
 log = logging.getLogger(__name__)
@@ -26,7 +27,7 @@ class TOCog(commands.Cog, name = __name__):
     if msg in [
       "Timeoutされたーい", "TOされたい"
     ]:
-      await message.author.timeout(timedelta(minutes=5), reason="Timeoutされたーい")
+      await message.author.timeout(datetime.timedelta(minutes=5), reason="Timeoutされたーい")
       await message.reply(random.choice(timeout_messages))
 
 async def setup(bot: Bot):
