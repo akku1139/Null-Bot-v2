@@ -24,6 +24,8 @@ class GgrksCog(commands.Cog, name = __name__):
       .removesuffix("ってなに？")
       .removesuffix("って何")
       .removesuffix("ってなに")
+      .removesuffix("ってだれ")
+      .removesuffix("って誰")
       .removesuffix("ってだれ?")
       .removesuffix("って誰?")
       .removesuffix("ってだれ？")
