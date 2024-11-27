@@ -22,3 +22,8 @@ https://qiita.com/t3tra/items/d41b694a8c04c6ac3687
 
 cogs, exts, command groups
 https://qiita.com/Lazialize/items/81f1430d9cd57fbd82fb
+https://zenn.dev/nano_sudo/articles/a00db1a55d6c4c
+
+Cogs + app_commands
+https://github.com/Rapptz/discord.py/discussions/8372
+https://qiita.com/Tettu0530_Qiita/items/372c8eb7a25aabc3c0c3
