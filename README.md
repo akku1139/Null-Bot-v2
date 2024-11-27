@@ -35,3 +35,4 @@ aio logging
 https://docs.python.org/ja/3/library/asyncio-dev.html
 https://ittrip.xyz/python/async-logging-python
 https://qiita.com/smatsumt/items/d8f290e40077a14210f2
+https://docs.python.org/ja/3/howto/logging-cookbook.html#dealing-with-handlers-that-block
