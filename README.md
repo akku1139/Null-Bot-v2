@@ -27,3 +27,6 @@ https://zenn.dev/nano_sudo/articles/a00db1a55d6c4c
 Cogs + app_commands
 https://github.com/Rapptz/discord.py/discussions/8372
 https://qiita.com/Tettu0530_Qiita/items/372c8eb7a25aabc3c0c3
+
+HybridCommands
+https://zenn.dev/yaakiyu_s/articles/43deb462a663c7
