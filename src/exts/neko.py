@@ -16,7 +16,7 @@ class NekoCog(commands.Cog, name = __name__):
     async with aiohttp.ClientSession() as session:
       cat = (await (await session.get("https://api.thecatapi.com/v1/images/search")).json())[0]
       await ctx.reply(
-        embed = discord.Embed().set_image(url = cat["url"]).set_footer(title = "id: "+cat["id"])
+        embed = discord.Embed().set_image(url = cat["url"]).set_footer(text="id: "+cat["id"])
       )
 
 async def setup(bot: Bot):
