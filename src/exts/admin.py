@@ -1,7 +1,7 @@
 from discord.ext import commands
 from src.bot import Bot
 
-import subprocess
+import asyncio
 
 import logging
 log = logging.getLogger(__name__)
