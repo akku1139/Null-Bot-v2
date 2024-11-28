@@ -1,20 +1,24 @@
 import discord
+
 from dotenv import load_dotenv
+load_dotenv()
+TOKEN = os.environ["DISCORD_TOKEN"]
+
 import os
 from bot import Bot
 from log_handler import DiscordWebHookHandler
-from logging import getLogger
-import uvloop
 
-load_dotenv()
-TOKEN = os.environ["DISCORD_TOKEN"]
+import logging
+logging.getLogger().addHandler(logging.StreamHandler())
+
+import uvloop
 
 bot = Bot(
   command_prefix = "!",
   intents = discord.Intents.all()
 )
 
-log = getLogger("main")
+log = logging.getLogger("main")
 
 @bot.event
 async def setup_hook():

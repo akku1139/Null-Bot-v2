@@ -1,6 +1,8 @@
 import logging
 import os
-from discord import SyncWebhook
+from discord import Webhook
+import aiohttp
+import urllib.request
 
 def splitter(log: str, max_length: int = 1990):
   """
@@ -33,16 +35,33 @@ def splitter(log: str, max_length: int = 1990):
 
 class DiscordWebHookHandler(logging.Handler):
   def __init__(self):
-    self.webhook = SyncWebhook.from_url(
-      os.environ['LOG_WEBHOOK']
-    )
-    self.console = logging.StreamHandler()
+    async def fake_webhook(msg):
+      urllib.request.urlopen(
+        urllib.request.Request(
+          self.webhook,
+          data=json.dumps({
+            "content": "sync webhook:\n" + msg
+          }).encode(),
+          headers={
+            "Content-Type": "application/json",
+            "User-Agent": "DiscordBot (private use) Python-urllib/3.10",
+          },
+        )
+      ).close()
+
+    self.webhook = fake_webhook
+
+    async def setup_webhook(this):
+      async with aiohttp.ClientSession() as session:
+        webhook = Webhook.from_url(os.environ["LOG_WEBHOOK"], session=session)
+        this.webhook = webhook.send
+
+    asyncio.create_task(setup_webhook(self))
     super().__init__()
 
   def emit(self, record):
-    self.console.emit(record)
     try:
       for chunk in splitter(self.format(record)):
-        self.webhook.send("```js\n" + chunk + "\n```")
+        asyncio.create_task(self.webhook("```js\n" + chunk + "\n```"))
     except Exception: # pylint: disable=broad-exception-caught
       self.handleError(record)
