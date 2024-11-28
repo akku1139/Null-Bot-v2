@@ -9,10 +9,7 @@ class GreetingCog(commands.Cog, name = __name__):
     self.bot = bot
 
   @commands.Cog.listener()
-  async def on_message(self, msg):
-    if msg.author.bot:
-      return
-
+  async def user_message(self, msg):
     match msg.content:
       case "おはよう" | "おは":
         await msg.reply("おは")

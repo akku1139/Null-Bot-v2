@@ -37,10 +37,7 @@ class LoginBonusCog(commands.Cog, name = __name__):
     log.info("login_bonus.json saved")
 
   @commands.Cog.listener()
-  async def on_message(self, msg):
-    if msg.author.bot:
-      return
-
+  async def user_message(self, msg):
     if any(keyword in msg.content for keyword in KEYWORDS):
       self.data.setdefault(
         str(msg.author.id),
