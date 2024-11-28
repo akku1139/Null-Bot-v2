@@ -12,7 +12,6 @@ class CoreCog(commands.Cog, name = __name__):
   async def on_message(self, msg):
     if msg.author.bot:
       return
-    log.info("Evevt: dispatch user_message")
     self.bot.dispatch("user_message", msg)
 
 async def setup(bot: Bot):
