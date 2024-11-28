@@ -28,8 +28,8 @@ async def main():
     handler = DiscordWebHookHandler(),
     root = True
   )
-  async with client:
-    await client.start(TOKEN)
+  async with bot:
+    await bot.start(TOKEN)
 
 if __name__ == "__main__":
   uvloop.run(main())
