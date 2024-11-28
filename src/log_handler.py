@@ -55,9 +55,8 @@ class DiscordWebHookHandler(logging.Handler):
     self.webhook = fake_webhook
 
     async def setup_webhook(this):
-      async with aiohttp.ClientSession() as session:
-        webhook = Webhook.from_url(os.environ["LOG_WEBHOOK"], session=session)
-        this.webhook = webhook.send
+      webhook = Webhook.from_url(os.environ["LOG_WEBHOOK"], session=aiohttp.ClientSession())
+      this.webhook = webhook.send
 
     asyncio.create_task(setup_webhook(self))
     super().__init__()
