@@ -32,7 +32,7 @@ async def setup_hook():
 async def on_message(msg):
   if msg.author.bot:
     return
-  await bot.dispatch("user_message", msg)
+  bot.dispatch("user_message", msg)
 
 async def main():
   discord.utils.setup_logging(
