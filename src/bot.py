@@ -3,6 +3,7 @@ from logging import getLogger
 log = getLogger("bot")
 
 class Bot(commands.Bot):
+  pass
   # async def is_owner(self, user):
   #   ret = False
   #   #if 1 == 0:  # Implement your own conditions here
