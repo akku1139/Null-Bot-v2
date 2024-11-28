@@ -38,7 +38,7 @@ def splitter(log: str, max_length: int = 1990):
 class DiscordWebHookHandler(logging.Handler):
   def __init__(self):
     async def fake_webhook(msg):
-      urllib.request.urlopen(
+      with ( urllib.request.urlopen(
         urllib.request.Request(
           os.environ["LOG_WEBHOOK"],
           data=json.dumps({
@@ -49,7 +49,8 @@ class DiscordWebHookHandler(logging.Handler):
             "User-Agent": "DiscordBot (private use) Python-urllib/3.10",
           },
         )
-      ).close()
+      ) ) as _req:
+        return
 
     self.webhook = fake_webhook
 

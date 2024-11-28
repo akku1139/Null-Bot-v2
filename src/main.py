@@ -2,16 +2,17 @@ import discord
 
 import os
 from dotenv import load_dotenv
-load_dotenv()
-TOKEN = os.environ["DISCORD_TOKEN"]
 
 from bot import Bot
 from log_handler import DiscordWebHookHandler
 
 import logging
-logging.getLogger().addHandler(logging.StreamHandler())
-
 import uvloop
+
+load_dotenv()
+TOKEN = os.environ["DISCORD_TOKEN"]
+
+logging.getLogger().addHandler(logging.StreamHandler())
 
 bot = Bot(
   command_prefix = "!",
