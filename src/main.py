@@ -14,10 +14,6 @@ bot = Bot(
   intents = discord.Intents.all()
 )
 
-discord.utils.setup_logging(
-  handler = DiscordWebHookHandler(),
-  root = True
-)
 log = getLogger("main")
 
 @bot.event
@@ -27,6 +23,13 @@ async def setup_hook():
       await bot.load_extension(f"src.exts.{cog[:-3]}")
   log.info("exts loaded")
 
+async def main():
+  discord.utils.setup_logging(
+    handler = DiscordWebHookHandler(),
+    root = True
+  )
+  async with client:
+    await client.start(TOKEN)
+
 if __name__ == "__main__":
-  uvloop.install()
-  bot.run(TOKEN, log_handler=None)
+  uvloop.run(main())
