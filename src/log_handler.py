@@ -40,7 +40,7 @@ class DiscordWebHookHandler(logging.Handler):
     async def fake_webhook(msg):
       urllib.request.urlopen(
         urllib.request.Request(
-          self.webhook,
+          os.environ["LOG_WEBHOOK"],
           data=json.dumps({
             "content": "sync webhook:\n" + msg
           }).encode(),
