@@ -7,7 +7,8 @@ from bot import Bot
 from log_handler import DiscordWebHookHandler
 
 import logging
-import uvloop
+#import uvloop
+import asyncio
 
 load_dotenv()
 TOKEN = os.environ["DISCORD_TOKEN"]
@@ -43,4 +44,4 @@ async def main():
     await bot.start(TOKEN)
 
 if __name__ == "__main__":
-  uvloop.run(main())
+  asyncio.run(main())
