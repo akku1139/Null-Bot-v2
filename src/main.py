@@ -28,6 +28,12 @@ async def setup_hook():
       await bot.load_extension(f"src.exts.{cog[:-3]}")
   log.info("exts loaded")
 
+@bot.event
+async def on_message(msg):
+  if msg.author.bot:
+    return
+  await self.bot.dispatch("user_message", msg)
+
 async def main():
   discord.utils.setup_logging(
     handler = DiscordWebHookHandler(),

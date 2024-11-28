@@ -4,6 +4,7 @@
 
 - auto update exts
 - run with uvloop
+- on_user_message (if not message.auther.bot)
 
 ## Note
 
@@ -36,3 +37,7 @@ https://docs.python.org/ja/3/library/asyncio-dev.html
 https://ittrip.xyz/python/async-logging-python
 https://qiita.com/smatsumt/items/d8f290e40077a14210f2
 https://docs.python.org/ja/3/howto/logging-cookbook.html#dealing-with-handlers-that-block
+
+Custom events
+https://github.com/Rapptz/discord.py/blob/master/discord/client.py#L492
+https://app.studyraid.com/en/read/7183/176802/custom-event-handling
