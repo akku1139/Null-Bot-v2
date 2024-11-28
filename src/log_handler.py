@@ -1,5 +1,7 @@
 import logging
 import os
+import asyncio
+import json
 from discord import Webhook
 import aiohttp
 import urllib.request
