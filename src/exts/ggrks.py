@@ -11,7 +11,7 @@ class GgrksCog(commands.Cog, name = __name__):
     self.bot = bot
 
   @commands.Cog.listener()
-  async def user_message(self, msg):
+  async def on_user_message(self, msg):
     m = msg.content
 
     ggrks = ( m

@@ -25,7 +25,7 @@ class AnkaCog(commands.Cog, name = __name__):
     await ctx.reply(f'{len(res)}個の安価が進行中です!\n' + "\n".join(res))
 
   @commands.Cog.listener()
-  async def user_message(self, msg):
+  async def on_user_message(self, msg):
     rm = []
     m = ""
     for k, v in self.ankas.items():
