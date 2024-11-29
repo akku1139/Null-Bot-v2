@@ -20,7 +20,6 @@ class LoginBonusCog(commands.Cog, name = __name__):
     self.bot = bot
     self.data = {}
 
-  # looks not working...
   async def cog_load(self):
     async with aiofiles.open(DATAPATH, mode="r") as f:
       contents = await f.read()
