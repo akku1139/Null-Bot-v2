@@ -15,7 +15,7 @@ class CountingCog(commands.Cog, name = __name__):
       match reaction.emoji:
         case "✅":
           self.count += 1
-        casr "❌":
+        case "❌":
           self.count = 0
 
       await reaction.message.add_reaction(reaction.emoji)
