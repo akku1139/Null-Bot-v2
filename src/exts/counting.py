@@ -24,7 +24,7 @@ class CountingCog(commands.Cog, name = __name__):
   async def counting(self, ctx):
     pass
 
-  @anka.command(hidden=True)
+  @counting.command(hidden=True)
   @commands.is_owner()
   async def setcount(self, ctx, count: int):
     if count < 0:
@@ -33,11 +33,11 @@ class CountingCog(commands.Cog, name = __name__):
     self.count = count
     await ctx.reply(f"カウントが更新されました: {count}")
 
-  @anka.command()
+  @counting.command()
   async def now(self, ctx):
     await ctx.reply(f"next: {self.count}")
 
-  @anka.command()
+  @counting.command()
   async def next(self, ctx):
     await ctx.reply(f"next: {self.count + 1}")
 
