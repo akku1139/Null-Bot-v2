@@ -35,7 +35,7 @@ class CountingCog(commands.Cog, name = __name__):
 
   @counting.command()
   async def now(self, ctx):
-    await ctx.reply(f"next: {self.count}")
+    await ctx.reply(f"now: {self.count}")
 
   @counting.command()
   async def next(self, ctx):
