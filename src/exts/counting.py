@@ -20,7 +20,7 @@ class CountingCog(commands.Cog, name = __name__):
 
       await reaction.message.add_reaction(reaction.emoji)
 
-  @commands.group()
+  @commands.group(aliases=["c"])
   async def counting(self, ctx):
     pass
 
