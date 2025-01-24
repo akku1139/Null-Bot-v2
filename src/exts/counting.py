@@ -7,11 +7,39 @@ log = logging.getLogger(__name__)
 class CountingCog(commands.Cog, name = __name__):
   def __init__(self, bot: Bot):
     self.bot = bot
+    self.count: int = 0
 
   @commands.Cog.listener()
   async def on_reaction_add(self, reaction, user):
     if user.id == 510016054391734273: # counting bot
+      match reaction.emoji
+        case "✅":
+          self.count += 1
+        casr "❌":
+          self.count = 0
+
       await reaction.message.add_reaction(reaction.emoji)
+
+  @commands.group()
+  async def counting(self, ctx):
+    pass
+
+  @anka.command(hidden=True)
+  @commands.is_owner()
+  async def setcount(self, ctx, count: int):
+    if count < 0:
+      await ctx.reply("0以上の整数を渡してください")
+      return
+    self.count = count
+    await ctx.reply(f"カウントが更新されました: {count}")
+
+  @anka.command()
+  async def now(self, ctx):
+    await ctx.reply(f"next: {self.count}")
+
+  @anka.command()
+  async def next(self, ctx):
+    await ctx.reply(f"next: {self.count + 1}")
 
 async def setup(bot: Bot):
   log.info("loaded")
