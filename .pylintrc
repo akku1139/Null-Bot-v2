@@ -24,3 +24,4 @@ indent-after-paren = 2
 disable = missing-docstring,
           wrong-import-order,
           line-too-long,
+          duplicate-code,

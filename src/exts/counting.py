@@ -12,7 +12,7 @@ class CountingCog(commands.Cog, name = __name__):
   @commands.Cog.listener()
   async def on_reaction_add(self, reaction, user):
     if user.id == 510016054391734273: # counting bot
-      match reaction.emoji
+      match reaction.emoji:
         case "✅":
           self.count += 1
         casr "❌":
