@@ -1,5 +1,6 @@
 from discord.ext import commands
 from src.bot import Bot
+import asyncio
 
 import logging
 log = logging.getLogger(__name__)
@@ -18,6 +19,7 @@ class CountingCog(commands.Cog, name = __name__):
         case "❌":
           self.count = 0
 
+      await asyncio.sleep(0.7)
       await reaction.message.add_reaction(reaction.emoji)
 
   @commands.group(aliases=["c"])
