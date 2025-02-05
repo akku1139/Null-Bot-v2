@@ -3,8 +3,8 @@ import discord
 import os
 from dotenv import load_dotenv
 
-from bot import Bot
-from log_handler import DiscordWebHookHandler
+from .bot import Bot
+from .log_handler import DiscordWebHookHandler
 
 import logging
 #import uvloop
