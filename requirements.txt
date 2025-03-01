@@ -14,7 +14,7 @@ jishaku ~= 2.6.0
 aiofiles ~= 24.1.0
 
 # AsyncIO HTTP library
-aiohttp ~= 3.11.11
+aiohttp ~= 3.11.13
 
 # Fast AsyncIO event loop
 #uvloop ~= 0.21.0
