@@ -1,7 +1,7 @@
 # Super thanks https://github.com/kintsuba/misskey-login-bonus-bot
 
 from discord.ext import commands, tasks
-from src.bot import Bot
+from bot import Bot
 
 import os.path
 import json

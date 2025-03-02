@@ -1,5 +1,5 @@
 from discord.ext import commands, tasks
-from src.bot import Bot
+from bot import Bot
 
 import aiofiles
 import json

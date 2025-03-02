@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord
-from src.bot import Bot
+from bot import Bot
 
 import aiohttp
 

@@ -1,5 +1,5 @@
 from discord.ext import commands
-from src.bot import Bot
+from bot import Bot
 
 import logging
 log = logging.getLogger(__name__)

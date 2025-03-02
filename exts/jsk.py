@@ -1,4 +1,4 @@
-from src.bot import Bot
+from bot import Bot
 from jishaku.cog import Jishaku
 
 import logging
