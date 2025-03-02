@@ -1,10 +1,10 @@
 import discord
+from discord.ext import commands
 
 import os
 from dotenv import load_dotenv
 
-from .bot import Bot
-from .log_handler import DiscordWebHookHandler
+from log_handler import DiscordWebHookHandler
 
 import logging
 #import uvloop
@@ -15,7 +15,7 @@ TOKEN = os.environ["DISCORD_TOKEN"]
 
 logging.getLogger().addHandler(logging.StreamHandler())
 
-bot = Bot(
+bot = commands.Bot(
   command_prefix = "!",
   intents = discord.Intents.all()
 )
@@ -24,9 +24,9 @@ log = logging.getLogger("main")
 
 @bot.event
 async def setup_hook():
-  for cog in os.listdir("src/exts/"):
+  for cog in os.listdir("exts/"):
     if cog.endswith(".py"):
-      await bot.load_extension(f"src.exts.{cog[:-3]}")
+      await bot.load_extension(f"exts.{cog[:-3]}")
   log.info("exts loaded")
 
 async def main():
