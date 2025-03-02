@@ -1,4 +1,5 @@
 from jishaku.cog import Jishaku
+from discord.ext import commands
 
 import logging
 log = logging.getLogger(__name__)
