@@ -1,5 +1,4 @@
 from discord.ext import commands
-from bot import Bot
 
 import asyncio
 
@@ -26,7 +25,7 @@ async def run_log(cmd: str) -> str:
   return f'$ {cmd} \n{await run(cmd)}\n'
 
 class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
-  def __init__(self, bot: Bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
 
   @commands.command()
@@ -43,9 +42,9 @@ class AdminCog(commands.Cog, name=__name__, command_attrs={ "hidden": True }):
 
     await msg.edit(content=f"```\n{l}```")
 
-async def setup(bot: Bot):
+async def setup(bot: commands.Bot):
   log.info("loaded")
   await bot.add_cog(AdminCog(bot))
 
-async def teardown(_bot: Bot):
+async def teardown(_bot: commands.Bot):
   log.info("unloaded")

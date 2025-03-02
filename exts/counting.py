@@ -1,12 +1,11 @@
 from discord.ext import commands
-from bot import Bot
 import asyncio
 
 import logging
 log = logging.getLogger(__name__)
 
 class CountingCog(commands.Cog, name = __name__):
-  def __init__(self, bot: Bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
     self.count: int = 0
 
@@ -43,9 +42,9 @@ class CountingCog(commands.Cog, name = __name__):
   async def next(self, ctx):
     await ctx.reply(f"next: {self.count + 1}")
 
-async def setup(bot: Bot):
+async def setup(bot: commands.Bot):
   log.info("loaded")
   await bot.add_cog(CountingCog(bot))
 
-async def teardown(_bot: Bot):
+async def teardown(_bot: commands.Bot):
   log.info("unloaded")

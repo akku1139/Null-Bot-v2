@@ -1,5 +1,4 @@
 from discord.ext import commands
-from bot import Bot
 
 import urllib.parse
 
@@ -7,7 +6,7 @@ import logging
 log = logging.getLogger(__name__)
 
 class GgrksCog(commands.Cog, name = __name__):
-  def __init__(self, bot: Bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
 
   @commands.Cog.listener()
@@ -47,9 +46,9 @@ class GgrksCog(commands.Cog, name = __name__):
       await msg.reply("https://google.com/search?q=" + urllib.parse.quote_plus(ggrks))
       return
 
-async def setup(bot: Bot):
+async def setup(bot: commands.Bot):
   log.info("loaded")
   await bot.add_cog(GgrksCog(bot))
 
-async def teardown(_bot: Bot):
+async def teardown(_bot: commands.Bot):
   log.info("unloaded")

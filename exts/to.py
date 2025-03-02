@@ -1,5 +1,4 @@
 from discord.ext import commands
-from bot import Bot
 
 import random
 import datetime
@@ -18,7 +17,7 @@ timeout_messages = [
 ]
 
 class TOCog(commands.Cog, name = __name__):
-  def __init__(self, bot: Bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
 
   @commands.Cog.listener()
@@ -30,9 +29,9 @@ class TOCog(commands.Cog, name = __name__):
       await message.author.timeout(datetime.timedelta(minutes=5), reason="Timeoutされたーい")
       await message.reply(random.choice(timeout_messages))
 
-async def setup(bot: Bot):
+async def setup(bot: commands.Bot):
   log.info("loaded")
   await bot.add_cog(TOCog(bot))
 
-async def teardown(_bot: Bot):
+async def teardown(_bot: commands.Bot):
   log.info("unloaded")

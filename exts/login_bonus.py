@@ -1,7 +1,6 @@
 # Super thanks https://github.com/kintsuba/misskey-login-bonus-bot
 
 from discord.ext import commands, tasks
-from bot import Bot
 
 import os.path
 import json
@@ -16,7 +15,7 @@ DATAPATH = f'{os.path.dirname(__file__)}/../../data/login_bonus.json'
 KEYWORDS = ["ログボ", "ろぐぼ", "ログインボーナス", "ろぐいんぼーなす", "ログインボーニャス", "ろぐいんぼーにゃす", "login"]
 
 class LoginBonusCog(commands.Cog, name = __name__):
-  def __init__(self, bot: Bot):
+  def __init__(self, bot: commands.Bot):
     self.bot = bot
     self.data = {}
 
@@ -51,9 +50,9 @@ class LoginBonusCog(commands.Cog, name = __name__):
       await msg.add_reaction("⭕")
       await msg.reply("Wip: ログインを確認しました!")
 
-async def setup(bot: Bot):
+async def setup(bot: commands.Bot):
   log.info("loaded")
   await bot.add_cog(LoginBonusCog(bot))
 
-async def teardown(_bot: Bot):
+async def teardown(_bot: commands.Bot):
   log.info("unloaded")
