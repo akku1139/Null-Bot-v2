@@ -1,5 +1,9 @@
 # https://github.com/pylint-dev/pylint/blob/main/examples/pylintrc
 
+[MAIN]
+
+ignore-paths=^venv.*
+
 [FORMAT]
 
 # String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1
