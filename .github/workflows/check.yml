@@ -38,10 +38,10 @@ jobs:
         if: ${{ !cancelled() }}
         run: |
           . ./venv/bin/activate
-          pylint $(find ./src -name '*.py' | xargs)
+          pylint $(find ./ -name '*.py' | xargs)
 
       - name: Type check
         if: ${{ !cancelled() }}
         run: |
           . ./venv/bin/activate
-          pyright $(find ./src -name '*.py' | xargs)
+          pyright $(find ./ -name '*.py' | xargs)
