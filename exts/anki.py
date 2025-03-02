@@ -7,7 +7,7 @@ import os
 import logging
 log = logging.getLogger(__name__)
 
-DATAPATH = f'{os.path.dirname(__file__)}/../../data/anki.json'
+DATAPATH = f'{os.path.dirname(__file__)}/../data/anki.json'
 
 class AnkiCog(commands.Cog, name = __name__):
   def __init__(self, bot: commands.Bot):

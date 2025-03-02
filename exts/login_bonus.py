@@ -11,7 +11,7 @@ import aiofiles
 import logging
 log = logging.getLogger(__name__)
 
-DATAPATH = f'{os.path.dirname(__file__)}/../../data/login_bonus.json'
+DATAPATH = f'{os.path.dirname(__file__)}/../data/login_bonus.json'
 KEYWORDS = ["ログボ", "ろぐぼ", "ログインボーナス", "ろぐいんぼーなす", "ログインボーニャス", "ろぐいんぼーにゃす", "login"]
 
 class LoginBonusCog(commands.Cog, name = __name__):
