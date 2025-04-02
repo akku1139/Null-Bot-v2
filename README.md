@@ -1,5 +1,10 @@
 # Null-Bot-v2
 
+## LICENSE
+
+このプロジェクトは、GNU Affero General Public License version 3以降の条件でライセンスされています。
+詳細については、LICENSEファイルを参照してください。
+
 ## TODOs
 
 - auto update exts
