@@ -8,7 +8,7 @@ discord ~= 2.3.2
 python-dotenv ~= 1.1.1
 
 # Useful utils
-jishaku ~= 2.6.0
+jishaku ~= 2.6.3
 
 # AsyncIO FS util
 aiofiles ~= 24.1.0
