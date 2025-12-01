@@ -4,4 +4,4 @@
 pyright ~= 1.1.407
 
 # Linter
-pylint ~= 4.0.2
+pylint ~= 4.0.4
