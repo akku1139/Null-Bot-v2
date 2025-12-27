@@ -11,13 +11,14 @@ class CountingCog(commands.Cog, name = __name__):
 
   @commands.Cog.listener()
   async def on_reaction_add(self, reaction, user):
-    if user.id == 510016054391734273: # counting bot
+    if user.id == 510016054391734273 and reaction.message.channel.id === 1172708941461983302: # counting bot and counting channel
       match reaction.emoji:
         case "✅" | "💯" | "☑️":
           self.count += 1
         case "❌":
           self.count = 0
 
+      await reaction.message.channel.edit(topic=f'now: {self.count} (!c now), next: {self.count+1} (!c next)')
       await asyncio.sleep(0.7)
       await reaction.message.add_reaction(reaction.emoji)
 
