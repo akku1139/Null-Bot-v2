@@ -30,7 +30,7 @@ class GgrksCog(commands.Cog, name = __name__):
     if ggrks != m:
       await msg.reply(
         "自分で調べることは非常に重要です。\n"+
-        "https://ggrks.world/" + ggrks.replace(" ", "+")
+        "https://yl.f5.si/ggrks/" + ggrks.replace(" ", "+")
       )
       return
 
