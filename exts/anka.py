@@ -21,7 +21,7 @@ class AnkaCog(commands.Cog, name = __name__):
       if v["msg"].channel.id == ctx.channel.id:
         res.append(f'>>{v["target"]} ({v["count"]}/{v["target"]}) {v["msg"].jump_url}')
 
-    await ctx.reply((f'{len(res)}個の安価が進行中です!\n' + "\n".join(res)) if len(res) else '進行中の安価はありません')
+    await ctx.reply((f'{len(res)}個の安価が進行中です!\n' + "\n".join(res)) if res else '進行中の安価はありません')
 
   @commands.Cog.listener()
   async def on_user_message(self, msg):
