@@ -18,7 +18,7 @@ class CountingCog(commands.Cog, name = __name__):
         case "❌":
           self.count = 0
 
-      await reaction.message.channel.edit(topic=f'now: {self.count} (!c now), next: {self.count+1} (!c next)')
+      await reaction.message.channel.edit(topic=f'next: {self.count+1}\n!c now/!c next')
       await asyncio.sleep(0.7)
       await reaction.message.add_reaction(reaction.emoji)
 
