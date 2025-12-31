@@ -27,7 +27,7 @@ class CountingCog(commands.Cog, name = __name__):
 
       if self.topic_task and not self.topic_task.done():
         self.topic_task.cancel()
-        self.topic_task = asyncio.create_task(self._do_edit(reaction.message.channel, f'now: {self.count} (!c now), next: {self.count+1} (!c next)'))
+      self.topic_task = asyncio.create_task(self._do_edit(reaction.message.channel, f'now: {self.count} (!c now), next: {self.count+1} (!c next)'))
       await asyncio.sleep(1.5)
       await reaction.message.add_reaction(reaction.emoji)
 
