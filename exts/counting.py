@@ -10,7 +10,7 @@ class CountingCog(commands.Cog, name = __name__):
     self.count: int = 0
     self.topic_task = None
 
-  async self._do_edit(self, channel, new_topic):
+  async def self._do_edit(self, channel, new_topic):
     try:
       await channel.edit(topic=new_topic)
     except asyncio.CancelledError:
