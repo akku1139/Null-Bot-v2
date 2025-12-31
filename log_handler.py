@@ -37,6 +37,11 @@ def splitter(log: str, max_length: int = 1990):
 
 class DiscordWebHookHandler(logging.Handler):
   def __init__(self):
+    super().__init__()
+
+    # 送信バッファ
+    self.queue: asyncio.Queue[str] = asyncio.Queue(maxsize=1000)
+
     async def fake_webhook(msg):
       with ( urllib.request.urlopen(
         urllib.request.Request(
@@ -55,15 +60,43 @@ class DiscordWebHookHandler(logging.Handler):
     self.webhook = fake_webhook
 
     async def setup_webhook(this):
-      webhook = Webhook.from_url(os.environ["LOG_WEBHOOK"], session=aiohttp.ClientSession())
+      session = aiohttp.ClientSession()
+      webhook = Webhook.from_url(os.environ["LOG_WEBHOOK"], session=session)
       this.webhook = webhook.send
 
+    async def worker(this):
+      """
+      キューに溜まったログを順番に送信するワーカー
+      """
+      while True:
+        msg = await this.queue.get()
+        try:
+          await this.webhook(msg)
+          # Discord webhook はだいたい 5req / 2sec 程度
+          await asyncio.sleep(0.5)
+        except Exception:
+          # 送信失敗時は捨てる（ログでログ死を防ぐ）
+          pass
+        finally:
+          this.queue.task_done()
+
+    # 非同期初期化
     asyncio.create_task(setup_webhook(self))
-    super().__init__()
+    asyncio.create_task(worker(self))
 
   def emit(self, record):
+    """
+    emitでは「送信しない」
+    キューに積むだけ
+    """
     try:
-      for chunk in splitter(self.format(record)):
-        asyncio.create_task(self.webhook("```js\n" + chunk + "\n```"))
-    except Exception: # pylint: disable=broad-exception-caught
+      formatted = self.format(record)
+      for chunk in splitter(formatted):
+        payload = "```js\n" + chunk + "\n```"
+        try:
+          self.queue.put_nowait(payload)
+        except asyncio.QueueFull:
+          # バッファ溢れたら潔く捨てる
+          pass
+    except Exception:
       self.handleError(record)
