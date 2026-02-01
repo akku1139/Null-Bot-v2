@@ -1,7 +1,7 @@
 ## Python deps for Actions
 
 # Type checker
-pyright ~= 1.1.407
+pyright ~= 1.1.408
 
 # Linter
 pylint ~= 4.0.4
